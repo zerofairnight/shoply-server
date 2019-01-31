@@ -48,4 +48,20 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+    /**
+     *  Get all of the shops that the user have created.
+     */
+    public function createdShops()
+    {
+        return $this->hasMany(Shop::class, 'creator_id');
+    }
+
+    /**
+     * The shops that belong to the user.
+     */
+    public function shops()
+    {
+        return $this->belongsToMany(Shop::class)->withTimestamps();
+    }
 }
