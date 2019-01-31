@@ -7,5 +7,7 @@ Route::middleware('auth:app')->get('/user', function (Request $request) {
 });
 
 Route::name('app.')->group(function () {
+    Route::post('login', 'LoginController@login');
+    Route::post('register', 'RegisterController@register');
     Route::apiResource('shops', 'ShopController');
 });
