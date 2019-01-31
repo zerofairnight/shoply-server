@@ -14,6 +14,12 @@ class Article extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'createdOn' => $this->created_at->timestamp,
+            'updatedOn' => $this->updated_at->timestamp,
+            'deletedOn' => $this->deleted_at ? $this->deleted_at->timestamp : null,
+        ];
     }
 }
