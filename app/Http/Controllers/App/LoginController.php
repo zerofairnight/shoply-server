@@ -46,7 +46,7 @@ class LoginController extends Controller
             $this->clearLoginAttempts($request);
 
             return response()->json([
-                'access_token' => $token,
+                'token' => $token,
                 // 'token_type' => 'bearer',
                 'expires_in' => $this->guard()->factory()->getTTL() * 60
             ])->header('Authorization', 'Bearer ' . $token);
