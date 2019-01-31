@@ -50,10 +50,11 @@ class TrashArticleController extends Controller
      */
     public function update(Request $request, $article)
     {
-        // $request->restore === true
         $article = Article::onlyTrashed()->findOrFail($article);
 
-        $article->restore();
+        if ($request->exists('restore')) {
+            $article->restore();
+        }
 
         return new ArticleResource($article);
     }
