@@ -14,10 +14,10 @@ class LocalDatabaseSeeder extends Seeder
     public function run()
     {
         // create a test user
-        factory(User::class)->create([
+        $user = factory(User::class)->create([
             'name' => 'Test User',
             'email' => 'a@a.com'
-        ]);
+        ])->shops()->attach(factory(Shop::class)->create()); // note that the shop can have a different owner
 
         factory(User::class, 50)->create();
     }
