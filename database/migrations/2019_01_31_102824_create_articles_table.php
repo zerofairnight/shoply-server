@@ -18,6 +18,7 @@ class CreateArticlesTable extends Migration
             $table->unsignedInteger('shop_id')->index();
             $table->string('name');
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('shop_id')->references('id')->on('shops');
         });
