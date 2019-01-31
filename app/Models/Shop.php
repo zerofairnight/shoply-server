@@ -31,4 +31,12 @@ class Shop extends Model
     {
         return $this->belongsToMany(User::class)->withTimestamps();
     }
+
+    /**
+     * The articles that belong to the shop.
+     */
+    public function articles()
+    {
+        return $this->hasMany(Article::class);
+    }
 }
