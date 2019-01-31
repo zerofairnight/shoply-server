@@ -14,10 +14,21 @@ class Shop extends Model
     protected $guarded = ['id'];
 
     /**
-     * Get the owner of the shop.
+     * Get the creator of the shop.
+     *
+     * Note that the creator is the account that have created the shop but it does not means that he have special privileges.
+     * Its just for us to keep reference of this user for later uses.
      */
-    public function user()
+    public function creator()
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * The users that belong to the shop.
+     */
+    public function users()
+    {
+        return $this->belongsToMany(User::class)->withTimestamps();
     }
 }

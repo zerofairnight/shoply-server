@@ -4,10 +4,10 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Models\Shop::class, function (Faker $faker) {
     return [
-        'user_id' => function () {
+        'creator_id' => function () {
             return factory(App\Models\User::class)->create()->id;
         },
-        'vatin' => $faker->numberBetween(10000000000, 99999999999),
+        'vatin' => $faker->numberBetween(10000000, 9999999),
         'name' => $faker->company,
         'email' => $faker->email,
         'phone_number' => $faker->phoneNumber,

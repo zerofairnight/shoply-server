@@ -15,7 +15,7 @@ class CreateShopsTable extends Migration
     {
         Schema::create('shops', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('user_id')->index();
+            $table->unsignedInteger('creator_id')->index();
             $table->string('vatin');
             $table->string('name');
             $table->string('email');
@@ -28,7 +28,7 @@ class CreateShopsTable extends Migration
             $table->string('postcode');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('creator_id')->references('id')->on('users');
         });
     }
 
