@@ -7,6 +7,6 @@ $factory->define(App\Models\Article::class, function (Faker $faker) {
         'shop_id' => function () {
             return factory(App\Models\Shop::class)->create()->id;
         },
-        'name' => $factory->name
+        'name' => $faker->name
     ];
 });
