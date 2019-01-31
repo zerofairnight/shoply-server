@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\App;
 
-use App\Models\Shop;
-use App\Http\Resources\Shop as ShopResource;
-use App\Http\Resources\ShopCollection;
+use App\Models\Article;
+use App\Http\Resources\Article as ArticleResource;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class ShopController extends Controller
+class ArticleController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -23,12 +22,11 @@ class ShopController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $reques)
+    public function index()
     {
-        return new ShopCollection($reques->user()->shops()->paginate());
+        //
     }
 
     /**
@@ -45,22 +43,22 @@ class ShopController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Shop  $shop
+     * @param  \App\Models\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function show(Shop $shop)
+    public function show(Article $article)
     {
-        return new ShopResource($shop);
+        return new ArticleResource($article);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Shop  $shop
+     * @param  \App\Models\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Shop $shop)
+    public function update(Request $request, Article $article)
     {
         //
     }
@@ -68,11 +66,13 @@ class ShopController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Shop  $shop
+     * @param  \App\Models\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Shop $shop)
+    public function destroy(Article $article)
     {
-        //
+        $article->delete();
+
+        return null;
     }
 }

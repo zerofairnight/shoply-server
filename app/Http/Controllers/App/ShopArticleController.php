@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\App;
 
 use App\Models\Shop;
-use App\Http\Resources\Shop as ShopResource;
-use App\Http\Resources\ShopCollection;
+use App\Models\Article;
+use App\Http\Resources\ArticleCollection;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class ShopController extends Controller
+class ShopArticleController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -24,11 +24,12 @@ class ShopController extends Controller
      * Display a listing of the resource.
      *
      * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Shop  $shop
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $reques)
+    public function index(Request $request, Shop $shop)
     {
-        return new ShopCollection($reques->user()->shops()->paginate());
+        return new ArticleCollection($shop->articles()->paginate());
     }
 
     /**
@@ -50,7 +51,7 @@ class ShopController extends Controller
      */
     public function show(Shop $shop)
     {
-        return new ShopResource($shop);
+        //
     }
 
     /**
